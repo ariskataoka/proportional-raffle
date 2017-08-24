@@ -32,13 +32,13 @@ class CSV2Candidate
     protected function extractIndividualData(string $line): Candidate
     {
         $line = trim($line);
-        list($timestamp, $nome, $email, $phone, $age, $gender) = explode(",", $line);
+        list($timestamp, $nome, $gender) = explode(",", $line);
         switch ($gender){
             case 'Feminino': $gender = Candidate::GENDER_LIST[1]; break;
             case 'Masculino': $gender = Candidate::GENDER_LIST[2]; break;
             default: $gender = Candidate::GENDER_LIST[0]; break;
         }
-        $candidate = new Candidate($nome, $email, $phone, $gender);
+        $candidate = new Candidate($nome, $gender);
         return $candidate;
     }
 

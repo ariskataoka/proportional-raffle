@@ -12,4 +12,4 @@ $manager = new RaffleManager($candidates);
 $urn = $manager->getUrn();
 $winnerTicket = $urn[rand(0, count($urn) - 1)];
 $winner = $manager->getWinner($winnerTicket);
-echo "{$winner->getName()} [{$winner->getEmail()}]", PHP_EOL;
+echo "{$winner->getName()}", PHP_EOL;

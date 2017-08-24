@@ -8,8 +8,6 @@ class Candidate
 {
     protected $id;
     protected $name;
-    protected $email;
-    protected $phone;
     protected $gender;
     protected $tickets = 0;
 
@@ -26,11 +24,9 @@ class Candidate
     ];
     protected const DEFAULT_GENDER = 0;
 
-    public function __construct(string $name, string $email, string $phone, string $gender)
+    public function __construct(string $name, string $gender)
     {
         $this->name = $name;
-        $this->email = filter_var($email, FILTER_VALIDATE_EMAIL);
-        $this->phone = $phone;
         $this->gender = in_array($gender, self::GENDER_LIST) ? $gender : self::GENDER_LIST[self::DEFAULT_GENDER];
     }
 
@@ -45,22 +41,6 @@ class Candidate
     public function getName(): string
     {
         return $this->name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEmail(): string
-    {
-        return $this->email;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPhone(): string
-    {
-        return $this->phone;
     }
 
     /**
